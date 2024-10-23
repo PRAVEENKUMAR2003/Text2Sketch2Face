@@ -1,57 +1,46 @@
-Text2Sketch2Face
-==============================
+### **Text2Sketch2Face** Project
 
-A short description of the project.
+#### **Project Overview**
+This project focuses on generating sketches from textual descriptions and further refining those sketches into realistic human faces. The work is inspired by forensic sketch artists, aiming to develop an automated system that transforms text descriptions into detailed sketches and eventually into realistic facial images.
 
-Project Organization
-------------
+#### **Results**:
 
-    ├── LICENSE
-    ├── Makefile           <- Makefile with commands like `make data` or `make train`
-    ├── README.md          <- The top-level README for developers using this project.
-    ├── data
-    │   ├── external       <- Data from third party sources.
-    │   ├── interim        <- Intermediate data that has been transformed.
-    │   ├── processed      <- The final, canonical data sets for modeling.
-    │   └── raw            <- The original, immutable data dump.
-    │
-    ├── docs               <- A default Sphinx project; see sphinx-doc.org for details
-    │
-    ├── models             <- Trained and serialized models, model predictions, or model summaries
-    │
-    ├── notebooks          <- Jupyter notebooks. Naming convention is a number (for ordering),
-    │                         the creator's initials, and a short `-` delimited description, e.g.
-    │                         `1.0-jqp-initial-data-exploration`.
-    │
-    ├── references         <- Data dictionaries, manuals, and all other explanatory materials.
-    │
-    ├── reports            <- Generated analysis as HTML, PDF, LaTeX, etc.
-    │   └── figures        <- Generated graphics and figures to be used in reporting
-    │
-    ├── requirements.txt   <- The requirements file for reproducing the analysis environment, e.g.
-    │                         generated with `pip freeze > requirements.txt`
-    │
-    ├── setup.py           <- makes project pip installable (pip install -e .) so src can be imported
-    ├── src                <- Source code for use in this project.
-    │   ├── __init__.py    <- Makes src a Python module
-    │   │
-    │   ├── data           <- Scripts to download or generate data
-    │   │   └── make_dataset.py
-    │   │
-    │   ├── features       <- Scripts to turn raw data into features for modeling
-    │   │   └── build_features.py
-    │   │
-    │   ├── models         <- Scripts to train models and then use trained models to make
-    │   │   │                 predictions
-    │   │   ├── predict_model.py
-    │   │   └── train_model.py
-    │   │
-    │   └── visualization  <- Scripts to create exploratory and results oriented visualizations
-    │       └── visualize.py
-    │
-    └── tox.ini            <- tox file with settings for running tox; see tox.readthedocs.io
+**1. Text to Sketch Generation:**
+   This image shows the output of the model from text descriptions to sketches.
+
+   ![Text2Sketch](./models/cvae-gans/results/4.jpeg)
+
+**2. Sketch to Realistic Face Generation:**
+   The second step involves translating the generated sketches into realistic facial images.
+
+   ![Sketch2Real](./models/cycle-gans/results/5.png)
+
+#### **Key Features**:
+1. **Parallel LLM Pipeline**:
+   - Four inference paths to efficiently extract multiple facial attributes from text inputs.
+2. **Conditional Variational Autoencoder (CVAE)**:
+   - Used for generating base facial sketches from the attributes extracted.
+3. **Conditional GAN (CGAN)**:
+   - Refines the sketches to include high-fidelity facial details.
+4. **Image Translation Techniques**:
+   - Experimentation with supervised methods like **Pix2Pix** and unsupervised methods like **CycleGAN** for translating sketches into realistic faces.
+
+#### **Directory Structure**:
+```
+├── Experiments
+│   ├── Dakshinya             # Experiment 1: Dakshinya's models and results
+│   └── Hemang Pix2Pix        # Experiment 2: Hemang’s Pix2Pix implementation
+└── models
+    ├── cvae-gans             # CVAE and GAN models
+    │   ├── results
+    │   └── utils
+    ├── cycle-gans            # CycleGAN models and results
+    │   └── results
+    ├── llm_pipeline          # Large Language Model pipeline code and scripts
+    └── Text2Sketch_BaseGAN   # Base GAN for text-to-sketch generation
+        └── results
+```
+
+---
 
 
---------
-
-<p><small>Project based on the <a target="_blank" href="https://drivendata.github.io/cookiecutter-data-science/">cookiecutter data science project template</a>. #cookiecutterdatascience</small></p>
